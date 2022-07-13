@@ -1,2 +1,4 @@
 # TrieDictionary
-A dictionary implemented using a trie instead of a hashmap, because tries are better
+A dictionary implemented using a trie instead of a hashmap, because tries are better.
+## Install
+`dotnet add package TrieDictionary --version 1.0.0`
