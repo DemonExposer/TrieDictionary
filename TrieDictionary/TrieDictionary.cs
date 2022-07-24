@@ -17,6 +17,30 @@ public class TrieDictionary<T> {
 		get => Get(key);
 		set => Insert(key, value);
 	}
+
+	/// <summary>
+	/// Checks if a key is present in the dictionary
+	/// </summary>
+	/// <param name="key">The key to look up</param>
+	/// <returns>true if the key is present, false if not</returns>
+	public bool Contains(string key) {
+		short charCode = (short) key[0];
+		if (charCode >= _children.Length)
+			return false;
+
+		if (_children[charCode] == null!)
+			return false;
+
+		TrieDictionary<T> t = _children[charCode];
+
+		if (key.Length > 1)
+			return t.Contains(key.Substring(1));
+
+		if (t._value != null)
+			return true;
+
+		return false;
+	}
 	
 	/// <summary>
 	/// Gets the value from the dictionary which is connected to the specified key
